@@ -1,0 +1,3 @@
+[uWSGI] getting INI configuration from .config/
+*** WARNING: Can't find section "uwsgi" in INI configuration file .config/ ***
+realpath() of uwsgi.ini failed: No such file or directory [core/utils.c line 3643]
