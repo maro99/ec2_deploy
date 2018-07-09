@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
+import json
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -18,7 +18,7 @@ TEMPLATES_DIR=os.path.join(BASE_DIR,'templates')
 STATICFILES_DIR=os.path.join(BASE_DIR,'static')
 ROOT_DIR = os.path.dirname(BASE_DIR)
 
-print(TEMPLATES_DIR)
+print(BASE_DIR)
 
 # static
 
@@ -42,7 +42,12 @@ MEDIA_URL ='/media/'
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#14tvrw)^t#751pasbgwd&kcyue4bmhydsdvq+ecdz-2&cxq8p'
+SECRET_DIR =os.path.join(EC2_DEPLOY,'.secrets')
+json_data = open(f'{SECRET_DIR}/base.json').read()
+data = json.loads(json_data)
+SECRET_KEY = data["SECRET_KEY"]
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

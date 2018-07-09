@@ -3,6 +3,8 @@
 /.static
 .media
 
+.secrets
+
 ### Django ###
 *.log
 *.pot
