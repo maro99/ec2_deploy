@@ -22,7 +22,7 @@ from config import views, settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    url('/post',views.index, name='index'),
+    url('',views.index, name='index'),
 ] + static(
     prefix=settings.MEDIA_URL,
     document_root=settings.MEDIA_ROOT,
