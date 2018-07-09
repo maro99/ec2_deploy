@@ -14,11 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf.urls.static import static
 from django.contrib import admin
 
-from config import views
+from config import views, settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url('',views.index, name='index'),
-]
+
+    url('/post',views.index, name='index'),
+] + static(
+    prefix=settings.MEDIA_URL,
+    document_root=settings.MEDIA_ROOT,
+)

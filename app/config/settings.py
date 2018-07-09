@@ -28,6 +28,16 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
 STATICFILES_DIRS =[STATICFILES_DIR,]
 
+EC2_DEPLOY = os.path.dirname(BASE_DIR)
+
+
+
+MEDIA_ROOT = os.path.join(EC2_DEPLOY,'.media')
+print(BASE_DIR)
+print(MEDIA_ROOT)
+
+#User-uploaded file을 접근할 URL접두어
+MEDIA_URL ='/media/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -45,6 +55,8 @@ ALLOWED_HOSTS = [
     '.amazonaws.com',
 ]
 
+AUTH_USER_MODEL = 'members.User'
+
 
 # Application definition
 
@@ -55,6 +67,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'members',
 ]
 
 MIDDLEWARE = [

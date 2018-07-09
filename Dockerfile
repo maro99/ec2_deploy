@@ -3,8 +3,8 @@ FROM            ec2-deploy:base
 ENV             PROJECT_DIR     /srv/project
 
 
-#Ngnix
-RUN             apt -y install nginx
+#Ngnix , supervisor install
+RUN             apt -y install nginx supervisor
 
 # Copy projects files
 COPY            .   ${PROJECT_DIR}
@@ -18,7 +18,7 @@ RUN             export VENV_PATH=$(pipenv --venv); echo $VENV_PATH;
 # Ngnix config
 
 RUN         cp -f ${PROJECT_DIR}/.config/nginx.conf \
-                  /etc/nginx.conf && \
+                  /etc/nginx/nginx.conf && \
 
             # available에 nginx_app.conf파일 복사
             cp -f ${PROJECT_DIR}/.config/nginx_app.conf \
@@ -31,6 +31,11 @@ RUN         cp -f ${PROJECT_DIR}/.config/nginx.conf \
                 ln -sf  /etc/nginx/sites-available/nginx_app.conf \
                         /etc/nginx/sites-enabled
 
+# Supervisor
+RUN             cp -f ${PROJECT_DIR}/.config/supervisor_app.conf \
+                        /etc/supervisor/conf.d
+# RUB supervisor
+CMD             supervisord -n
 ## Run uWSGI (CMD)
 #CMD             pipenv run uwsgi --ini ${PROJECT_DIR}/.config/uwsgi_http.ini
 
