@@ -4,11 +4,6 @@ from .base import *
 
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.1.1',
-    '.amazonaws.com',
-]
 
 # Static
 STATIC_URL = '/static/'
