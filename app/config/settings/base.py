@@ -13,50 +13,20 @@ import json
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR =os.path.dirname( os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR =os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 TEMPLATES_DIR=os.path.join(BASE_DIR,'templates')
 STATICFILES_DIR=os.path.join(BASE_DIR,'static')
 ROOT_DIR = os.path.dirname(BASE_DIR)
-
-print(BASE_DIR)
-
-# static
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
-STATICFILES_DIRS =[STATICFILES_DIR,]
-
-EC2_DEPLOY = os.path.dirname(BASE_DIR)
-
-
-
-MEDIA_ROOT = os.path.join(EC2_DEPLOY,'.media')
-print(BASE_DIR)
-print(MEDIA_ROOT)
-
-#User-uploaded file을 접근할 URL접두어
-MEDIA_URL ='/media/'
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_DIR =os.path.join(EC2_DEPLOY,'.secrets')
+SECRET_DIR =os.path.join(ROOT_DIR,'.secrets')
 json_data = open(f'{SECRET_DIR}/base.json').read()
 data = json.loads(json_data)
 SECRET_KEY = data["SECRET_KEY"]
-
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.1.1',
-    '.amazonaws.com',
-]
 
 AUTH_USER_MODEL = 'members.User'
 
@@ -102,20 +72,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -151,6 +107,3 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
-
-print(DATABASES)

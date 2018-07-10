@@ -9,4 +9,4 @@
 
 # sttings,production
 #   배포용 설정. Debug메시지 출력 안함.
-from .local import *
+# from .local import *

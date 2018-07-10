@@ -27,4 +27,4 @@ DATABASES = {
 # json_data = open(f'{JSON_DIR}/base.json').read()
 # data = json.loads(json_data)
 # SECRET_KEY = data["SECRET_KEY"]
-# print(SECRET_KEY)
+print(DATABASES)
