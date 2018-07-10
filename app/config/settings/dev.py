@@ -11,10 +11,12 @@ MEDIA_ROOT = os.path.join(EC2_DEPLOY,'.media')
 MEDIA_URL ='/media/'
 
 # wsgi
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.dev.application'
 
 # DB
 SECRET_DIR =os.path.join(EC2_DEPLOY,'.secrets')
 json_data = open(f'{SECRET_DIR}/dev.json').read()
 data = json.loads(json_data)
 DATABASES = data["DATABASES"]
+
+print(DATABASES)

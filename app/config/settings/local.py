@@ -13,7 +13,7 @@ MEDIA_ROOT = os.path.join(EC2_DEPLOY,'.media')
 MEDIA_URL ='/media/'
 
 # wsgi
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.local.application'
 
 # DB
 DATABASES = {

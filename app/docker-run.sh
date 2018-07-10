@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-
-docker run --name ec2-deploy --rm --it -p 9995:80
+docker run --name ec2-deploy --rm -it -p 9995:80 ec2-deploy
