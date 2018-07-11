@@ -28,3 +28,4 @@ DATABASES = {
 # data = json.loads(json_data)
 # SECRET_KEY = data["SECRET_KEY"]
 print(DATABASES)
+

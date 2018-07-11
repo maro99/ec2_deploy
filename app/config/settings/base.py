@@ -28,11 +28,14 @@ json_data = open(f'{SECRET_DIR}/base.json').read()
 data = json.loads(json_data)
 SECRET_KEY = data["SECRET_KEY"]
 
+STATIC_DIR = os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS = [STATIC_DIR,]
+
+
 AUTH_USER_MODEL = 'members.User'
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -94,9 +97,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'ko-kr'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -105,5 +107,3 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/

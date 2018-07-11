@@ -1,7 +1,5 @@
 from django.contrib import admin
-
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-
 from .models import User
 # Register your models here.
 
@@ -22,7 +20,6 @@ class UserAdmin(BaseUserAdmin):
         ('주요일자', {'fields': (
             'last_login',
             'date_joined')}),
-
     )
 
 
